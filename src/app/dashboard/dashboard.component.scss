@@ -1,0 +1,117 @@
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.page_title {
+  padding: 4% 0%;
+}
+
+.search_area {
+  display: flex;
+  justify-content: space-between;
+
+  .fa-search {
+    color: #dfdfdf;
+    margin: 10px;
+  }
+
+  .input_area > input:focus + .fa-search {
+    color: black;
+  }
+
+  .input_area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: whitesmoke;
+    padding: 7px;
+    border-radius: 5px;
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-weight: 500;
+    }
+  }
+}
+
+.button_options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* For tablets: */
+@media only screen and (max-width: 600px) {
+  .input_area {
+    flex: 1;
+  }
+  .button_options {
+    flex-direction: column;
+  }
+}
+
+/** For Desktop **/
+@media only screen and (min-width: 768px) {
+  .button_options {
+    flex-direction: row;
+  }
+}
+
+table {
+  width: 100%;
+  overflow-x: scroll;
+}
+.table {
+  width: 100%;
+  margin: 10px 0px;
+  overflow-x: auto;
+
+  td {
+    .actions {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: flex-end;
+
+      button {
+        font-size: 1.4rem;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+    }
+
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .fa-check {
+    color: rgb(0, 255, 94);
+  }
+
+  .cdk-column-salary {
+    width: 40px !important;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(-45deg, #a7a7a7, #dcdcdd);
+  background-size: 400% 400%;
+  animation: gradient 1s ease infinite;
+  color: transparent;
+  content: "whatever it is you want to add";
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,0 +1,44 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  height: 60px;
+  align-items: center;
+  padding: 0 3%;
+  box-shadow: -1px 4px 7px 0px #949494;
+  position: sticky;
+  top: 0;
+}
+
+.title {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.user_area {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin: 0 10px;
+    background: rgb(213, 213, 213);
+    border-radius: 50% 50%;
+    height: 40px;
+    width: 40px;
+  }
+
+  p {
+    font-weight: bolder;
+    color: #383737;
+    font-size: large;
+  }
+
+  .fa-chevron-down {
+    margin: 5px;
+    cursor: pointer;
+  }
+}

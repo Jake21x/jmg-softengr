@@ -1,0 +1,103 @@
+<div class="page_title">
+  <h1>Dashboard</h1>
+  <div>
+    {{ today | date: "EEE, MMM dd, yyyy" }}
+  </div>
+</div>
+
+<div class="search_area">
+  <div class="input_area">
+    <i class="fa fa-search"></i>
+    <input
+      placeholder="Search worker"
+      [ngModel]="searchQuery"
+      (ngModelChange)="searchTyping($event)"
+    />
+  </div>
+  <div class="button_options">
+    <button mat-button><i class="fa fa-filter"></i>&nbsp; Filter</button>
+    <button mat-button (click)="sortAction($event)">
+      <i class="fa fa-sort"></i> &nbsp; Join Date {{ sortBy }}
+    </button>
+  </div>
+</div>
+
+<div class="table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+    <ng-container matColumnDef="workerid">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+
+      <td mat-cell *matCellDef="let element">
+        <label [ngClass]="isLoading ? 'skeleton' : ''">
+          {{ isLoading ? "asdfasdfadsfadfdasfdsf" : element.workerid }}
+        </label>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>FULLNAME</th>
+
+      <td mat-cell *matCellDef="let element">
+        <label [ngClass]="isLoading ? 'skeleton' : ''">
+          {{
+            isLoading
+              ? "asdfasdfadsfadfdasfdsf"
+              : element.name + " " + element.lastname
+          }}
+        </label>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef>DEPARTMENT</th>
+      <td mat-cell *matCellDef="let element">
+        <label [ngClass]="isLoading ? 'skeleton' : ''">
+          {{ isLoading ? "asdfasdfadsfadfdasfdsf" : element.department }}
+        </label>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="joining_date">
+      <th mat-header-cell *matHeaderCellDef>JOIN DATE</th>
+      <td mat-cell *matCellDef="let element">
+        <label [ngClass]="isLoading ? 'skeleton' : ''">
+          {{
+            isLoading
+              ? "asdfasdfadsfadfdasfdsf"
+              : (element.joining_date | date: "MM/dd/yyyy")
+          }}
+        </label>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="salary">
+      <th mat-header-cell *matHeaderCellDef>Compliance</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="actions">
+          <button
+            (click)="checkWorker(element)"
+            [ngClass]="isLoading ? 'skeleton' : ''"
+            mat-mini-fab
+            mat-elavation-
+            color="secondary"
+            aria-label="small delete button"
+          >
+            <ng-container *ngIf="element.checked">
+              <i class="fa fa-check fa-1x"></i>
+            </ng-container>
+            <ng-container *ngIf="!element.checked">
+              <i class="fa fa-hourglass-half fa-1x"></i>
+            </ng-container>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>
